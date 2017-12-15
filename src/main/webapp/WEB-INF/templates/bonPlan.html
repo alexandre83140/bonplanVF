@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Bon Plans</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	</head>
+	<body>
+        <header>
+         <h1 id="alex"><a href="accueil">Les Escapades d'Alex</a></h1>
+                <ul id="menuH">
+                <li><a href="nightlife">NightLife</a></li>
+                <li><a href="culture">Culture</a></li>
+                <li><a href="bonPlan">Bon Plans</a></li>
+                <li><a href="ressources">Ressources</a></li>
+                </ul>
+        </header>
+		<section id="bonPlan">
+			<section id="BPfixe">
+				<ul>
+					<li class="titreBP">Ch'tite faim</li>
+					<li class="descripBP">Sache que la Chicor&eacutee, un des restaurants les plus grands de la ville, officie 7j/7 24h/24.</br>Tr&egraves pratique en cas de petite faim en sortant de bo&icircte de nuit.</li>
+					<li class="titreBP">Se d&eacuteplacer</li>
+					<li class="descripBP">Pour seulement 36 euros par an tu peux avoir ta carte V'Lille, </br> qui te permmettra de te d&eacuteplacer en v&eacutelo toute l'annn&eacutee.</li>
+				</ul>
+			</section>
+			<section id="BPAdd" th:each="bonplan : ${bonplans}">
+				<ul>
+				    <li class="titreBP" th:text="${bonplan.nomBP}"></li>
+					<li class="descripBP" th:text="${bonplan.descriptifBP}"></li>
+					<li class="descripBP" th:text="${bonplan.lieuBP}"></li>
+					<li class="descripBP" th:text="${bonplan.prixBP}"></li>
+					<li class="descripBP" th:text="${bonplan.dateBP}"></li>
+                    <li class ="descripBP"><a th:href="'delete?idBP='+${bonplan.idBP}">Supprimer</a></li>
+				</ul>
+			</section>
+
+            <div class="supprimerTout">
+                <form action="deleteallbonplan" method="post" class="form-horizontal">
+                    <div id="supprimerall">
+                        <label for="supprimerall"></label>
+                        <input type="submit" value="Supprimer les annonces" id="supprimerTout"/>
+                        <script type="text/javascript">
+                            var monCompteur=0;
+                            if(monCompteur>0){
+                                alert("Plus de bons plans");
+                            }
+                            monCompteur++;
+                        </script>
+                    </div>
+                </form>
+            </div>
+
+
+            <h1 id="proposition">Si vous avez des propositions de bons plans, n'h&eacutesitez pas &agrave l'inscrire sur le site</h1>
+
+            <div class="formulaire">
+                <form method="post" class="form-horizontal">
+
+                    <div id="nomUser">
+                        <label for="nomUser">Nom de l'utilisateur :</label>
+                        <input type="text" name="nomUser"  id="nomU"/>
+                    </div>
+
+                    <div id="nomEvent">
+                        <label for="nomEvent">Nom du Bon Plan      :</label>
+                        <input type="text" name="nomEvent" id="nomE"/>
+                    </div>
+
+                    <div id="descriEvent">
+                        <label for="descriEvent">Description          :</label>
+                        <input type="longtext" name="descriEvent"  id="descriE"/>
+                    </div>
+
+                    <div id="date">
+                        <label for="date">Date                 :</label>
+                        <input type="date" name="date" id="dateE"/>
+                    </div>
+
+                    <div id="lieu">
+                        <label for="lieu">Lieu                  :</label>
+                        <input type="text" name="lieu" id="lieuE"/>
+                    </div>
+
+                    <div id="prix">
+                        <label for="prix">Prix                 :</label>
+                        <input type="number" name="prix" id="prixE"/>
+                    </div>
+
+                    <div id="valider">
+                        <label for="valider"></label>
+                        <input type="submit" value="Je valide !" id="validerE"/>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </body>
+</html>

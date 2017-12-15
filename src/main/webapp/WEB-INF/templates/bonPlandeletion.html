@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Bon Plans</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	</head>
+	<body>
+		<header>
+			<h1 id="alex"><a href="accueil">Les Escapades d'Alex</a></h1>
+			<ul id="menuH">
+			<li><a href="nightlife">NightLife</a></li>
+			<li><a href="culture">Culture</a></li>
+			<li><a href="bonPlan">Bon Plans</a></li>
+			<li><a href="ressources">Ressources</a></li>
+			</ul>
+			
+		</header>
+		<section id="bonPlan">
+			<section id="BPfixe">
+				<ul>
+					<li class="titreBP">Ch'tite faim</li>
+					<li class="descripBP">Sache que la Chicor&eacutee, un des restaurants les plus grands de la ville, officie 7j/7 24h/24.</br>Tr&egraves pratique en cas de petite faim en sortant de bo&icircte de nuit.</li>
+					<li class="titreBP">Se d&eacuteplacer</li>
+					<li class="descripBP">Pour seulement 36 euros par an tu peux avoir ta carte V'Lille, </br> qui te permmettra de te d&eacuteplacer en v&eacutelo toute l'annn&eacutee.</li>
+				</ul>
+			</section>
+			<section>
+                <div class="confirmation">
+                    <h3>Certain?</h3>
+                    <p>Voulez-vous vraiment supprimer le bon plan <strong th:text="${bonplan.nomBP}">nameBP</strong> ?</p>
+                    <p><a th:href="'delete?confirm=true&idBP='+${bonplan.idBP}">Oui je veux le supprimer</a> </p>
+                    <p> <a href="bonPlan">Non je ne souhaite plus le supprimer</a></p>
+                </div>
+            </section>
+        </section>
+    </body>
+</html>
